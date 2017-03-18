@@ -38,4 +38,49 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+#Inicio das configurações de listagem editar e criar
+
+  config.model Annotation do
+    create do
+      field  :title
+      field  :notes
+
+      field :user_id, :hidden do
+        default_value do
+          bindings[:view]._current_user.id
+        end
+      end
+
+      field :date, :hidden do
+        default_value do Date.current
+        end
+      end
+
+      field :status, :hidden do
+        default_value do "active"
+
+        end
+      end
+    end
+  end
+
+  config.model Annotation do
+    edit do
+      field  :title
+      field  :notes
+
+      #field.disabled :user_id
+      #field.disabled :date
+
+      field :status
+    end
+  end
+
+
+
+
+
+
+
 end
