@@ -62,21 +62,42 @@ RailsAdmin.config do |config|
 
         end
       end
+
     end
+
+      edit do
+        field  :title
+        field  :notes
+
+        #field.disabled :user_id
+        #field.disabled :date
+
+        field :status
+      end
+
   end
 
-  config.model Annotation do
-    edit do
-      field  :title
-      field  :notes
 
-      #field.disabled :user_id
-      #field.disabled :date
+  config.model User do
+    create do
+      field  :name
+      field  :kind
+      field  :status
+      field  :email
+      field  :password
+      field  :password_confirmation
 
-      field :status
+
     end
-  end
 
+      edit do
+        
+        field  :password
+        field  :password_confirmation
+
+      end
+
+  end
 
 
 
