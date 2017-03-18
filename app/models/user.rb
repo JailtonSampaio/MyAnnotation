@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   enum kind: [:journalist, :pagination, :manager]
   enum status: [:active, :inactive]
 
+  mount_uploader :photo, PhotoUploader
+
   has_many :annotations
 
 end
