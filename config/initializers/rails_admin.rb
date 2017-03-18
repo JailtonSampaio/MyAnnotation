@@ -93,7 +93,7 @@ RailsAdmin.config do |config|
 
       edit do
 
-        field  :photo 
+        field  :photo
         field  :password
         field  :password_confirmation
 
@@ -102,7 +102,12 @@ RailsAdmin.config do |config|
   end
 
 
+#Modificando a aparencia
 
+    #mudando o nome da aplicação
+      config.main_app_name = ["My Annotations", "*Minhas Anotações*"]
+
+    
 
 
 
