@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318194401) do
+ActiveRecord::Schema.define(version: 20170318215746) do
 
   create_table "annotations", force: :cascade do |t|
     t.date     "date"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170318194401) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "photo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
