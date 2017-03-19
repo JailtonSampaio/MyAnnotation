@@ -91,12 +91,10 @@ RailsAdmin.config do |config|
     end
 
       edit do
-<<<<<<< HEAD
+
 
         field  :photo
-=======
-        
->>>>>>> parent of 999f63d... Incluir feld :photo no model user
+
         field  :password
         field  :password_confirmation
 
@@ -110,7 +108,7 @@ RailsAdmin.config do |config|
     #mudando o nome da aplicação
       config.main_app_name = ["My Annotations", "*Minhas Anotações*"]
 
-    
+
 
 
 
