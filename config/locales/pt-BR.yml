@@ -1,4 +1,22 @@
 pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+      annotation: Anotações
+    attributes:
+      user:
+        name: Nome
+        kind: "Atividade"
+        email: "E-mail"
+        created_at: "Criado em"
+        updated_at: "Modificado em"
+      annotation:
+        date: "data"
+        title: "Título"
+        notes: "Anotação"
+        user: "Usuário"
+        created_at: "Criado em"
+        updated_at: "Modificado em"
 
   date:
     abbr_day_names:
@@ -87,7 +105,7 @@ pt-BR:
     - Sábado
     formats:
       default: "%d/%m/%Y"
-      long: "%d de %B de %Y"
+      long: "%d/%m/%Y" #"%d de %B de %Y"
       short: "%d de %B"
     month_names:
     -
@@ -110,14 +128,14 @@ pt-BR:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: aproximadamente 1 hora
-        other: aproximadamente %{count} horas
+        one: Proximo 1 hora
+        other: Proximo %{count} horas
       about_x_months:
-        one: aproximadamente 1 mês
-        other: aproximadamente %{count} meses
+        one: Proximo 1 mês
+        other: Proximo %{count} meses
       about_x_years:
-        one: aproximadamente 1 ano
-        other: aproximadamente %{count} anos
+        one: Proximo 1 ano
+        other: Proximo %{count} anos
       almost_x_years:
         one: quase 1 ano
         other: quase %{count} anos
@@ -154,17 +172,23 @@ pt-BR:
       second: Segundo
       year: Ano
 
-      activerecord:
-        models:
-          user: Usuário
-      attributes:
-        user:
-          name: Nome
-  view:
-
   admin:
-
-
+    form:
+      cancel: Cancelar
+      basic_info: Informações básicas
+      required: Necessário
+      optional: Opcional
+      one_char: caractere
+      char_length_up_to: Comprimento até
+      char_length_of: Comprimento
+      save: Salvar
+      save_and_add_another: Salvar e adicionar outro
+      save_and_edit: Salvar e editar
+      all_of_the_following_related_items_will_be_deleted: Todos os arquivos selecionados serão excluídos
+      are_you_sure_you_want_to_delete_the_object: Você tem certeza que deseja excluir
+      confirmation: Sim, tenho certeza
+      bulk_delete: "Os seguintes objetos serão excluídos podendo também excluir objetos relacionados ou deixar relacionamentos órfãos"
+      new_model: "%{name} (novo)"
     js:
       true: Sim
       false: Não
@@ -211,9 +235,6 @@ pt-BR:
       log_out: Sair
       ago: Atrás
       more: "Mais %{count} %{models_name}"
-
-
-
     flash:
       successful: "%{name} foi %{action} com sucesso"
       error: "%{name} falhou ao ser %{action}"
@@ -232,7 +253,7 @@ pt-BR:
       message: Mensagem
     actions:
       dashboard:
-        title: Administração do site
+        title: Painel de Bordo - My Annotation
         menu: Dashboard
         breadcrumb: Dashboard
       index:
@@ -283,22 +304,6 @@ pt-BR:
         title: Histórico para %{model_label} '%{object_label}'
         menu: Histórico
         breadcrumb: Histórico
-    form:
-      cancel: Cancelar
-      basic_info: Informações básicas
-      required: Necessário
-      optional: Opcional
-      one_char: caractere
-      char_length_up_to: Comprimento até
-      char_length_of: Comprimento
-      save: Salvar
-      save_and_add_another: Salvar e adicionar outro
-      save_and_edit: Salvar e editar
-      all_of_the_following_related_items_will_be_deleted: Todos os arquivos selecionados serão excluídos
-      are_you_sure_you_want_to_delete_the_object: Você tem certeza que deseja excluir
-      confirmation: Sim, tenho certeza
-      bulk_delete: "Os seguintes objetos serão excluídos podendo também excluir objetos relacionados ou deixar relacionamentos órfãos"
-      new_model: "%{name} (novo)"
     export:
       confirmation: Exportar para %{name}
       select: Selecione os campos para exportar

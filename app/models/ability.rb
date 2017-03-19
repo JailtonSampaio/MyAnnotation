@@ -14,7 +14,7 @@ class Ability
             when u = "pagination"
                 can :access, :rails_admin
                 can :dashboard
-                can :read, Annotation, status: :active
+                can :read, Annotation, status: "active"
                 can [:read,:update], User, id: user.id
 
             when u = "manager"
