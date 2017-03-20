@@ -128,14 +128,14 @@ pt-BR:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: Proximo 1 hora
-        other: Proximo %{count} horas
+        one: Aprox. 1 hora
+        other: Aprox. %{count} horas
       about_x_months:
-        one: Proximo 1 mês
-        other: Proximo %{count} meses
+        one: Aprox. 1 mês
+        other: Aprox. %{count} meses
       about_x_years:
-        one: Proximo 1 ano
-        other: Proximo %{count} anos
+        one: Aprox. 1 ano
+        other: Aprox. %{count} anos
       almost_x_years:
         one: quase 1 ano
         other: quase %{count} anos
@@ -253,7 +253,7 @@ pt-BR:
       message: Mensagem
     actions:
       dashboard:
-        title: Painel de Bordo - My Annotation
+        title: Painel de Bordo - My Annotations
         menu: Dashboard
         breadcrumb: Dashboard
       index:
