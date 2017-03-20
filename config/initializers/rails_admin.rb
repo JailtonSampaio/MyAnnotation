@@ -42,6 +42,8 @@ RailsAdmin.config do |config|
 #Inicio das configurações de listagem editar e criar
 
   config.model Annotation do
+    #incluindo icone do http://fontawesome.io/icon
+    #navigation_icon "fa-text-width"
     create do
       field  :title
       field  :notes
