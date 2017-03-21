@@ -21,7 +21,7 @@ RailsAdmin.config do |config|
 
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar true
+  #config.show_gravatar true
 
   config.actions do
     dashboard                     # mandatory
@@ -38,6 +38,10 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+#Configurando historico
+
+#config.audit_with :history, Annotation
 
 #Inicio das configurações de listagem editar e criar
 
@@ -108,7 +112,7 @@ RailsAdmin.config do |config|
 #Modificando a aparencia
 
     #mudando o nome da aplicação
-      config.main_app_name = ["My Annotations", "*Minhas Anotações*"]
+      config.main_app_name = "My Annotations", ""
 
 
 
