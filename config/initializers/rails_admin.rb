@@ -112,7 +112,7 @@ RailsAdmin.config do |config|
 #Modificando a aparencia
 
     #mudando o nome da aplicação
-      config.main_app_name = "My Annotations", ""
+      config.main_app_name = "My Annotation", "*Minhas Anotações*"
 
 
 

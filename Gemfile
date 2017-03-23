@@ -38,11 +38,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem para o sistema de anotações
 #--------------------------------
 
-gem 'rails_admin'
+gem 'rails_admin', :git => 'https://github.com/JailtonSampaio/annotations_clone_rails_admin.git'
 gem 'devise'
 gem 'cancancan'
 gem 'carrierwave'
-gem 'rails_admin_rollincode', '~> 1.0'
+gem 'rails_admin_rollincode', :git => 'https://github.com/JailtonSampaio/annotations_clone_rollincode_rails_admin_theme.git'
+
 
 
 #--------$-------$$$$------$$$$$
