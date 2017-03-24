@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "devise_bootstrap_views";
+
+ body {
+   background-color: #1D755F;
+ }
+
+ .panel-body {
+   background-color: #37BC9B;
+ }
+
+  .panel-info {
+    border-color: #72ceb7;
+  }
+  .panel-info > .panel-heading {
+     color: #ffffff;
+     background-color: #2B957A;
+     border-color: #72ceb7;
+     padding: 18px 5px;
+   }

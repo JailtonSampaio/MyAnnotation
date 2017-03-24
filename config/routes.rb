@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
-  mount RailsAdmin::Engine => '/', as: 'rails_admin'
+  devise_for :users, skip: [:sessions]
+as :user do
+  get 'MyAnnotations', to: 'devise/sessions#new', as: :new_user_session
+  post 'signin', to: 'devise/sessions#create', as: :user_session
+  match 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
+end
+  mount RailsAdmin::Engine => '/MyAnnotations/admin', as: 'rails_admin'
+
+  get '/' => RailsAdmin::Engine
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
