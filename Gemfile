@@ -49,6 +49,7 @@ gem 'devise-bootstrap-views'
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 gem 'rails_admin_charts'
 
 #gem "query_report"#, "~> 1.0.4"
@@ -57,6 +58,8 @@ gem 'rails_admin_charts'
 #gem 'prawn-rails'
 # Gem para gerar os gráficos
 #gem 'gruff'
+=======
+>>>>>>> parent of 560aeb9... recria a lista de  de navegação coloca todos os models e inclui um link personalizado no final relatorios
 =======
 >>>>>>> parent of 560aeb9... recria a lista de  de navegação coloca todos os models e inclui um link personalizado no final relatorios
 
