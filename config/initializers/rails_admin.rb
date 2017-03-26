@@ -1,16 +1,5 @@
 RailsAdmin.config do |config|
 
-<<<<<<< HEAD
-  #require 'query_report/helper'
-
-  #Abilitando e exibindo a acition
-
-  #require Rails.root.join('lib', 'rails_admin', 'rails_admin_pdf.rb')
-  #RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Pdf)
-#
-
-=======
->>>>>>> parent of 560aeb9... recria a lista de  de navegação coloca todos os models e inclui um link personalizado no final relatorios
   ### Popular gems integration
 
   ## == Devise ==
@@ -34,12 +23,10 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   #config.show_gravatar true
 
-  require 'rails_admin/config/actions/launch_filter'
 
-  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::LaunchFilter)
 
   config.actions do
-    launch_filter { only Filter }
+
     dashboard                     # mandatory
     index                         # mandatory
     new
@@ -131,20 +118,34 @@ RailsAdmin.config do |config|
       config.main_app_name = "My Annotation", "*Minhas Anotações*"
 
 #abilitandi graficos no models
-#  include RailsAdminCharts
-#  config.actions do
-#   all # NB: comment out this line for RailsAdmin < 0.6.0
-#   charts
+  include RailsAdminCharts
+  config.actions do
+   all # NB: comment out this line for RailsAdmin < 0.6.0
+   charts
 
-#      class Annotation < ActiveRecord::Base
-#          def self.graph_data(since = -30.days.ago)
-#          end
-#          def self.chart_type
-#            'charts'
-#          end
-#      end
+      class Annotation < ActiveRecord::Base
+          def self.graph_data(since = -30.days.ago)
+          end
+          def self.chart_type
+            'charts'
+          end
+      end
+    end
 
-#    end
+
+    def main_navigation
+      nodes_stack = RailsAdmin::Config.visible_models(controller: controller)
+      node_model_names = nodes_stack.collect { |c| c.abstract_model.model_name }
+
+      nodes_stack.group_by(&:navigation_label).collect do |navigation_label, nodes|
+        nodes = nodes.select { |n| n.parent.nil? || !n.parent.to_s.in?(node_model_names) }
+        li_stack = navigation nodes_stack, nodes
+
+        label = navigation_label || t('admin.misc.navigation')
+
+        %(<li class='dropdown-header'>testetstte #{capitalize_first_letter label}</li>#{li_stack}) if li_stack.present?
+      end.join.html_safe
+    end
 
 
 
