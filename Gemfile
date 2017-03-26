@@ -48,8 +48,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'devise-bootstrap-views'
 
 
-
-
 gem 'rails_admin_charts'
 
 #gem "query_report"#, "~> 1.0.4"
