@@ -47,10 +47,18 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'devise-bootstrap-views'
 
+gem 'rails_admin_dynamic_charts', github: 'abelesponda/rails_admin_dynamic_charts'
+gem 'chartkick'
+gem 'descriptive_statistics'
+
+#gem 'rails_admin_charts'
+
+#gem "query_report"#, "~> 1.0.4"
+
 # Gem para gerar os pdfs
-gem 'prawn-rails'
+#gem 'prawn-rails'
 # Gem para gerar os gráficos
-gem 'gruff'
+#gem 'gruff'
 
 
 #--------$-------$$$$------$$$$$

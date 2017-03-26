@@ -1,5 +1,6 @@
 RailsAdmin.config do |config|
 
+  #require 'query_report/helper'
 
   #Abilitando e exibindo a acition
 
@@ -30,7 +31,12 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   #config.show_gravatar true
 
+  require 'rails_admin/config/actions/launch_filter'
+
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::LaunchFilter)
+
   config.actions do
+    launch_filter { only Filter }
     dashboard                     # mandatory
     index                         # mandatory
     new
@@ -144,6 +150,23 @@ RailsAdmin.config do |config|
 
     #mudando o nome da aplicação
       config.main_app_name = "My Annotation", "*Minhas Anotações*"
+
+#abilitandi graficos no models
+#  include RailsAdminCharts
+#  config.actions do
+#   all # NB: comment out this line for RailsAdmin < 0.6.0
+#   charts
+
+#      class Annotation < ActiveRecord::Base
+#          def self.graph_data(since = -30.days.ago)
+#          end
+#          def self.chart_type
+#            'charts'
+#          end
+#      end
+
+#    end
+
 
 
 
