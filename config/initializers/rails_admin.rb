@@ -50,7 +50,7 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-
+# recria a lista de  de navegação coloca todos os models e inclui um link personalizado no final
   RailsAdmin::ApplicationHelper.module_eval do
 
     def main_navigation
@@ -63,7 +63,7 @@ RailsAdmin.config do |config|
 
         label = navigation_label || t('admin.misc.navigation')
 
-        %(<li class='dropdown-header'>#{capitalize_first_letter label}</li>#{li_stack}<li data-model=\"campaign\"><a class=\"pjax\" href=\"/report/pdf\">Relatorios</a>) if li_stack.present?
+        %(<li class='dropdown-header'></li>#{li_stack}<li data-model=\"_\"><a class=\"pjax\" href=\"/report/pdf\">Relatorios</a>) if li_stack.present?
       end.join.html_safe
 
     end
