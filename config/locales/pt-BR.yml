@@ -17,6 +17,7 @@ pt-BR:
         user: "Usuário"
         created_at: "Criado em"
         updated_at: "Modificado em"
+
   date:
     abbr_day_names:
     - Dom
@@ -255,10 +256,6 @@ pt-BR:
         title: Painel de Bordo - My Annotations
         menu: Dashboard
         breadcrumb: Dashboard
-      report:
-        title: Relatorios
-        menu: Relatorios
-        breadcrumb: Relatorios
       index:
         title: Lista de %{model_label_plural}
         menu: Listar

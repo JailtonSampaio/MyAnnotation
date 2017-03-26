@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'report/pdf'
-
   devise_for :users, skip: [:sessions]
-
 as :user do
   get 'entrar', to: 'devise/sessions#new', as: :new_user_session
   post 'entrar', to: 'devise/sessions#create', as: :user_session
