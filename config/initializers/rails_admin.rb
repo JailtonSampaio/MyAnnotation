@@ -120,7 +120,7 @@ RailsAdmin.config do |config|
 #abilitandi graficos no models
   include RailsAdminCharts
   config.actions do
-   all # NB: comment out this line for RailsAdmin < 0.6.0
+   all #NB: comment out this line for RailsAdmin < 0.6.0
    charts
 
       class Annotation < ActiveRecord::Base
@@ -133,23 +133,25 @@ RailsAdmin.config do |config|
     end
 
 
-    def main_navigation
-      nodes_stack = RailsAdmin::Config.visible_models(controller: controller)
-      node_model_names = nodes_stack.collect { |c| c.abstract_model.model_name }
 
-      nodes_stack.group_by(&:navigation_label).collect do |navigation_label, nodes|
-        nodes = nodes.select { |n| n.parent.nil? || !n.parent.to_s.in?(node_model_names) }
-        li_stack = navigation nodes_stack, nodes
+    RailsAdmin::ApplicationHelper.module_eval do
+      def main_navigation
+        nodes_stack = RailsAdmin::Config.visible_models(controller: controller)
+        node_model_names = nodes_stack.collect { |c| c.abstract_model.model_name }
 
-        label = navigation_label || t('admin.misc.navigation')
+        nodes_stack.group_by(&:navigation_label).collect do |navigation_label, nodes|
+          nodes = nodes.select { |n| n.parent.nil? || !n.parent.to_s.in?(node_model_names) }
+          li_stack = navigation nodes_stack, nodes
 
-        %(<li class='dropdown-header'>testetstte #{capitalize_first_letter label}</li>#{li_stack}) if li_stack.present?
-      end.join.html_safe
+          label = navigation_label || t('admin.misc.navigation')
+
+          %(<li class='dropdown-header'> #{capitalize_first_letter label}</li>#{li_stack}) if li_stack.present?
+    %("<li data-model=\"_\"><a class=\"pjax nav-level-1\" href=\"/relatorios\">Relatorios</a></li>")
+        end.join.html_safe
+
+      end
     end
 
-
-
-sssss
 
 
 
