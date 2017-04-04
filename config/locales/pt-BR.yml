@@ -252,6 +252,10 @@ pt-BR:
       item: Item
       message: Mensagem
     actions:
+      charts:
+        menu: Gráfico
+        title: Gráfico Geral
+        breadcrumb: Gráfico Geral
       dashboard:
         title: Painel de Bordo - My Annotations
         menu: Dashboard

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   devise_for :users, skip: [:sessions]
 as :user do
   get 'entrar', to: 'devise/sessions#new', as: :new_user_session

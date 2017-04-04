@@ -1,0 +1,44 @@
+
+
+
+<h4>Comparativo de produção dos usuários nos periodos abaixo. </h4>
+
+
+  <form class="form-horizontal" action="/annotation/report_pdf/" accept-charset="UTF-8" method="POST">
+      <div class="panel-heading">
+        
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+        <label class="radio-inline">
+          <input type="radio" name="periodo" id="periodo30" value="30">
+          30 Dias
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="periodo" id="periodo60" value="60">
+          60 Dias
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="periodo" id="periodo90" value="90">
+          90 Dias
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="periodo" id="periodo180" value="180">
+          180 Dias
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="periodo" id="periodo360" value="360">
+          360 Dias
+        </label>
+      </div>
+
+    <button type="submit" class="btn btn-success btn-lg ">Gerar Relatório</button>
+  </form>
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+  // Javascript magic that loads a users auth credentials into the Admin's
+  // client and redirects to the user portal when ready.
+</script>

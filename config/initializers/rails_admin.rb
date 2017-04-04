@@ -2,6 +2,9 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
+  require Rails.root.join('lib', 'rails_admin', 'report_pdf.rb')
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ReportPdf)
+
   ## == Devise ==
   config.authenticate_with do
      warden.authenticate! scope: :user
@@ -35,7 +38,12 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
+    report_pdf do
+      visible do
+        bindings[:abstract_model].model.to_s == "Annotation"
+      end
+    end
+
 
     ## With an audit adapter, you can add:
     # history_index
@@ -51,9 +59,14 @@ RailsAdmin.config do |config|
   config.model Annotation do
     #incluindo icone do http://fontawesome.io/icon
     #navigation_icon "fa-text-width"
+    configure :notes do
+      html_attributes rows: 20, cols: 50
+      required true
+    end
     create do
       field  :title
       field  :notes
+
 
       field :user_id, :hidden do
         default_value do
@@ -120,37 +133,33 @@ RailsAdmin.config do |config|
 #abilitandi graficos no models
   include RailsAdminCharts
   config.actions do
-   all #NB: comment out this line for RailsAdmin < 0.6.0
-   charts
-
-      class Annotation < ActiveRecord::Base
-          def self.graph_data(since = -30.days.ago)
-          end
-          def self.chart_type
-            'charts'
-          end
-      end
-    end
+    all #NB: comment out this line for RailsAdmin < 0.6.0
+    charts
+  end
 
 
+    #recria a barra de navegação da direita e inclua no Application_Controller.rb
+    #RailsAdmin::ApplicationHelper.module_eval do
 
-    RailsAdmin::ApplicationHelper.module_eval do
-      def main_navigation
-        nodes_stack = RailsAdmin::Config.visible_models(controller: controller)
-        node_model_names = nodes_stack.collect { |c| c.abstract_model.model_name }
+      #def main_navigation
+      #  nodes_stack = RailsAdmin::Config.visible_models(controller: controller)
+      #  node_model_names = nodes_stack.collect { |c| c.abstract_model.model_name }
 
-        nodes_stack.group_by(&:navigation_label).collect do |navigation_label, nodes|
-          nodes = nodes.select { |n| n.parent.nil? || !n.parent.to_s.in?(node_model_names) }
-          li_stack = navigation nodes_stack, nodes
+      #  nodes_stack.group_by(&:navigation_label).collect do |navigation_label, nodes|
+      #    nodes = nodes.select { |n| n.parent.nil? || !n.parent.to_s.in?(node_model_names) }
+      #    li_stack = navigation nodes_stack, nodes
 
-          label = navigation_label || t('admin.misc.navigation')
+      #    label = navigation_label || t("admin.misc.navigation")
 
-          %(<li class='dropdown-header'> #{capitalize_first_letter label}</li>#{li_stack}) if li_stack.present?
-    %("<li data-model=\"_\"><a class=\"pjax nav-level-1\" href=\"/relatorios\">Relatorios</a></li>")
-        end.join.html_safe
+          #inclui link na barra de navegação sem aparecer no grupo link no final da espa
+           # + "<li data-model=\"_\"><a class=\"pjax\" href=\"/report/pdf\">Relatórios</a></li>"
 
-      end
-    end
+      #   %("<li class='dropdown-header'> #{capitalize_first_letter label}</li>#{li_stack}") if li_stack.present?
+
+      #  end.join.html_safe
+
+      #end
+    #end
 
 
 
