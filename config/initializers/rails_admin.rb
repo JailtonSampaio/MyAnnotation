@@ -38,9 +38,12 @@ RailsAdmin.config do |config|
     show
     edit
     delete
+
     report_pdf do
       visible do
-        bindings[:abstract_model].model.to_s == "Annotation"
+        if user.kind == "manager"
+          bindings[:abstract_model].model.to_s == "Annotation"
+        end
       end
     end
 
@@ -129,13 +132,6 @@ RailsAdmin.config do |config|
 
     #mudando o nome da aplicação
       config.main_app_name = "My Annotation", "*Minhas Anotações*"
-
-#abilitandi graficos no models
-  include RailsAdminCharts
-  config.actions do
-    all #NB: comment out this line for RailsAdmin < 0.6.0
-    charts
-  end
 
 
     #recria a barra de navegação da direita e inclua no Application_Controller.rb

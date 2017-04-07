@@ -252,6 +252,10 @@ pt-BR:
       item: Item
       message: Mensagem
     actions:
+      report_pdf:
+        menu: Relatorio
+        title: Relatorio de Produção
+        breadcrumb: Produção
       charts:
         menu: Gráfico
         title: Gráfico Geral

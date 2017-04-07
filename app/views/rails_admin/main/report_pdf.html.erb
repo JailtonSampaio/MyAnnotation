@@ -1,44 +1,106 @@
 
+<h4>Comparativo de Produção de Textos. </h4>
 
 
-<h4>Comparativo de produção dos usuários nos periodos abaixo. </h4>
+  <form  action="/annotation/report_pdf/" accept-charset="UTF-8" method="GET">
+      <div class="row" style="background-color:#e2f2a4; padding:30px">
 
-
-  <form class="form-horizontal" action="/annotation/report_pdf/" accept-charset="UTF-8" method="POST">
-      <div class="panel-heading">
-        
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 
-        <label class="radio-inline">
-          <input type="radio" name="periodo" id="periodo30" value="30">
-          30 Dias
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="periodo" id="periodo60" value="60">
-          60 Dias
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="periodo" id="periodo90" value="90">
-          90 Dias
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="periodo" id="periodo180" value="180">
-          180 Dias
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="periodo" id="periodo360" value="360">
-          360 Dias
-        </label>
+        <div class="col-md-3" >
+          <h4>Selecione um periodo</h4>
+          <i class="fa fa-calendar glyphicon glyphicon-calendar"></i>
+          <input class="form-control" style="display: inline; width:248px" type="text"  id="demo" value="" />
+        </div>
+
+
+
+
+        <div class="col-md-6" >
+          <h4>Selecione os Usuarios "PARA TODOS DEIXE COMO ESTA"</h4>
+            <input name="frm_users" type="text" class="ba-ex1 form-control" value="">
+            <%
+              list_user = JSON.parse(User.select('name','id').where("status = 0 AND kind = 1 OR status = 0 AND kind = 0").to_json)
+              list_user = list_user.to_s
+              #transforma a consulta em JSON depois tranforma para string para que aceite .gsub
+              #observar que estou usando .html_safe para tranforma HTML Entity (named) do variavel
+             %>
+          <script>
+            jQuery(document).ready(function($){
+                $('.ba-ex1').boxautocomplete({
+                  data: <%= list_user.gsub(/"name"=>/,'"name":').gsub(/"id"=>/,'"value":').html_safe %>,
+                  uniqueValue: true,
+                  hideInput: true,
+                  valueFormat: 'json',
+                  search: true,
+                  searchPlaceholder: "Procurar ...",
+                  searchButtonText: "",
+                  searchMin: 1,
+                  delemiter: ","
+                });
+            });
+        </script>
       </div>
 
-    <button type="submit" class="btn btn-success btn-lg ">Gerar Relatório</button>
+        <div class="row col-md-2 " style="padding:30px">
+          <button type="submit" class="btn btn-success btn-lg ">Gerar Relatório</button>
+        </div>
+      </div>
+    </br>
+
   </form>
 
 
 
 
 
-<script type="text/javascript" charset="utf-8">
-  // Javascript magic that loads a users auth credentials into the Admin's
-  // client and redirects to the user portal when ready.
-</script>
+
+
+  <script type="text/javascript">
+
+    $('#demo').daterangepicker({
+      "locale": {
+          "format": "DD/MM/YYYY",
+          "separator": " - ",
+          "applyLabel": "Apply",
+          "cancelLabel": "Cancel",
+          "fromLabel": "From",
+          "toLabel": "To",
+          "customRangeLabel": "Custom",
+          "weekLabel": "W",
+          "daysOfWeek": [
+              "DO",
+              "SE",
+              "TE",
+              "QA",
+              "QI",
+              "SX",
+              "SB"
+          ],
+          "monthNames": [
+              "Janeiro",
+              "Fevereiro",
+              "Março",
+              "Abril",
+              "Maio",
+              "Junho",
+              "Julho",
+              "Agosto",
+              "Setembro",
+              "Outubro",
+              "Novembro",
+              "Desembro"
+          ],
+          "firstDay": 1
+      },
+
+  }, function(start, end, label) {
+    console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+  });
+
+
+
+
+
+
+  </script>
