@@ -3,12 +3,9 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   require Rails.root.join('lib', 'rails_admin', 'report_pdf.rb')
-
-  require Rails.root.join('lib', 'rails_admin', 'grafic_chart_kick.rb')
-
-
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ReportPdf)
 
+  require Rails.root.join('lib', 'rails_admin', 'grafic_chart_kick.rb')
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::GraficChartKick)
 
 
@@ -48,17 +45,17 @@ RailsAdmin.config do |config|
     delete
 
     report_pdf do
-      visible do
+
         only Annotation
-        my_option :journalist => false
-      end
+      #  my_option :journalist => false
+
     end
 
     grafic_chart_kick do
-      visible do
+
         only Annotation
-        my_option :journalist => false
-      end
+      #  my_option :journalist => false
+
     end
 
 
@@ -119,6 +116,10 @@ RailsAdmin.config do |config|
 
 
   config.model User do
+    visible do
+      # controller bindings is available here. Example:
+      bindings[:controller].current_user.kind == :manage
+    end
     create do
       field  :name
       field  :kind

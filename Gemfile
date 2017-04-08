@@ -47,6 +47,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'devise-bootstrap-views'
 
+# Gem font-awesome-rails fa
+gem "font-awesome-rails"
 
 # Gem para gerar os pdfs
 gem 'prawn-rails'
