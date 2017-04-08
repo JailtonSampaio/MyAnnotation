@@ -3,7 +3,15 @@ RailsAdmin.config do |config|
   ### Popular gems integration
 
   require Rails.root.join('lib', 'rails_admin', 'report_pdf.rb')
+
+  require Rails.root.join('lib', 'rails_admin', 'grafic_chart_kick.rb')
+
+
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ReportPdf)
+
+  RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::GraficChartKick)
+
+
 
   ## == Devise ==
   config.authenticate_with do
@@ -41,11 +49,18 @@ RailsAdmin.config do |config|
 
     report_pdf do
       visible do
-        if user.kind == "manager"
-          bindings[:abstract_model].model.to_s == "Annotation"
-        end
+        only Annotation
+        my_option :journalist => false
       end
     end
+
+    grafic_chart_kick do
+      visible do
+        only Annotation
+        my_option :journalist => false
+      end
+    end
+
 
 
     ## With an audit adapter, you can add:

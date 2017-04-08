@@ -16,12 +16,11 @@ class Ability
                 can :dashboard
                 can :read, Annotation, status: "active"
                 can [:read,:update], User, id: user.id
+                can :pagination, Annotation, :grafic_chart_kick => false
 
             when u = "manager"
                 can :manage, :all
         end
-
-
     end
 
 
