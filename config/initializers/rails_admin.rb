@@ -1,15 +1,16 @@
 RailsAdmin.config do |config|
 
-  ### Popular gems integration
+  #Incluindo as Custom Actions
 
   require Rails.root.join('lib', 'rails_admin', 'report_pdf.rb')
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::ReportPdf)
+
 
   require Rails.root.join('lib', 'rails_admin', 'grafic_chart_kick.rb')
   RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::GraficChartKick)
 
 
-
+  ### Popular gems integration
   ## == Devise ==
   config.authenticate_with do
      warden.authenticate! scope: :user
@@ -116,9 +117,11 @@ RailsAdmin.config do |config|
 
 
   config.model User do
+
     visible do
-      # controller bindings is available here. Example:
-      bindings[:controller].current_user.kind == :manage
+
+      #Testa se o usuario é manager borlean
+      bindings[:controller]._current_user.kind == "manager"
     end
     create do
       field  :name
