@@ -1,3 +1,21 @@
+
+
+
+#---informações sobre ações de cada kind tipo de usuarios
+#------kind: journalist
+#---------- cria e edita suas anotações, ler e editar seu usuario
+#------kind: portal
+#---------- cria e edita suas anotações, ler e editar seu usuario
+#------kind: pagination
+#---------- ler todas as anotações, ler e editar seu usuario
+#------kind: editor
+#---------- cria e edita todas as anotações, ler e editar seu usuario
+#------kind: manager
+#---------- ler e edita o estatos de suas anotações, criar ler e editar todos usuarios
+#------kind: super
+#---------- todas as funções
+#--------------------------------------------------------------------
+
 class Ability
   include CanCan::Ability
 
