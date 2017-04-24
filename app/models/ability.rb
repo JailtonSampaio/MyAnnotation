@@ -1,6 +1,7 @@
 
 
 
+
 #---informações sobre ações de cada kind tipo de usuarios
 #------kind: journalist
 #---------- cria e edita suas anotações, ler e editar seu usuario
@@ -9,12 +10,15 @@
 #------kind: pagination
 #---------- ler todas as anotações, ler e editar seu usuario
 #------kind: editor
-#---------- cria e edita todas as anotações, ler e editar seu usuario
+#---------- cria edita ler todas as anotações, ler e editar seu usuario
 #------kind: manager
 #---------- ler e edita o estatos de suas anotações, criar ler e editar todos usuarios
 #------kind: super
 #---------- todas as funções
 #--------------------------------------------------------------------
+
+
+
 
 class Ability
   include CanCan::Ability
@@ -22,21 +26,42 @@ class Ability
   def initialize(user)
     if user
         u = user.kind
-        case u
-            when u = "journalist"
+        a = user.status
+        case u && a
+        when u = "journalist" #&& a = "active"
                 can :access, :rails_admin
                 can :dashboard
                 can [:read,:create,:update], Annotation, user_id: user.id
                 can [:read,:update], User, id: user.id
 
-            when u = "pagination"
+            when u = "portal" #&& a = "active"
+                can :access, :rails_admin
+                can :dashboard
+                can [:read,:create,:update], Annotation, user_id: user.id
+                can [:read,:update], User, id: user.id
+
+            when u = "pagination" #&& a = "active"
                 can :access, :rails_admin
                 can :dashboard
                 can :read, Annotation, status: "active"
                 can [:read,:update], User, id: user.id
-                can :pagination, Annotation, :grafic_chart_kick => false
 
-            when u = "manager"
+            when u = "editor" #&& a = "active"
+                can :access, :rails_admin
+                can :dashboard
+                can [:read,:create,:update], Annotation
+                can [:read,:update], User, id: user.id
+
+            when u = "manager" #&& a = "active"
+                can :access, :rails_admin
+                can :dashboard
+                can :read, Annotation
+                can [:read,:create,:update], User, id: user.id
+                #exibe as action custon
+                can :grafic_chart_kick, Annotation
+                can :report_pdf, Annotation
+
+            when u = "super" #&& a = "active"
                 can :manage, :all
         end
     end
@@ -55,7 +80,7 @@ class Ability
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
-    # here are :read, :create, :update and :destroy.
+    # here are :read, :create, :update && :destroy.
     #
     # The second argument is the resource the user can perform the action on.
     # If you pass :all it will apply to every resource. Otherwise pass a Ruby

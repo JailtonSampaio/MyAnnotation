@@ -121,7 +121,8 @@ RailsAdmin.config do |config|
     visible do
 
       #Testa se o usuario é manager borlean
-      bindings[:controller]._current_user.kind == "manager"
+      bindings[:controller]._current_user.kind == "super" or bindings[:controller]._current_user.kind == "manager"
+
     end
     create do
       field  :name
@@ -136,8 +137,8 @@ RailsAdmin.config do |config|
 
       edit do
 
-
-        field  :photo
+        field  :status
+        #field  :photo
 
         field  :password
         field  :password_confirmation
