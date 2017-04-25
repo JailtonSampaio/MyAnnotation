@@ -42,6 +42,7 @@ gem 'rails_admin', :git => 'https://github.com/JailtonSampaio/annotations_clone_
 gem 'devise'
 gem 'cancancan'
 gem 'carrierwave'
+gem "mini_magick"
 gem 'rails_admin_rollincode', :git => 'https://github.com/JailtonSampaio/annotations_clone_rollincode_rails_admin_theme.git'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'

@@ -26,42 +26,41 @@ class Ability
   def initialize(user)
     if user
         u = user.kind
-        a = user.status
-        case u && a
-        when u = "journalist" #&& a = "active"
+        case u
+        when u = "journalist"
                 can :access, :rails_admin
                 can :dashboard
                 can [:read,:create,:update], Annotation, user_id: user.id
                 can [:read,:update], User, id: user.id
 
-            when u = "portal" #&& a = "active"
+            when u = "portal"
                 can :access, :rails_admin
                 can :dashboard
                 can [:read,:create,:update], Annotation, user_id: user.id
                 can [:read,:update], User, id: user.id
 
-            when u = "pagination" #&& a = "active"
+            when u = "pagination"
                 can :access, :rails_admin
                 can :dashboard
                 can :read, Annotation, status: "active"
                 can [:read,:update], User, id: user.id
 
-            when u = "editor" #&& a = "active"
+            when u = "editor"
                 can :access, :rails_admin
                 can :dashboard
                 can [:read,:create,:update], Annotation
                 can [:read,:update], User, id: user.id
 
-            when u = "manager" #&& a = "active"
+            when u = "manager"
                 can :access, :rails_admin
                 can :dashboard
                 can :read, Annotation
-                can [:read,:create,:update], User, id: user.id
+                can [:read,:create,:update], User
                 #exibe as action custon
                 can :grafic_chart_kick, Annotation
                 can :report_pdf, Annotation
 
-            when u = "super" #&& a = "active"
+            when u = "super"
                 can :manage, :all
         end
     end

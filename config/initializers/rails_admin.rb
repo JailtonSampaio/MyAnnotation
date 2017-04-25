@@ -138,7 +138,7 @@ RailsAdmin.config do |config|
       edit do
 
         field  :status
-        #field  :photo
+        field  :avatar
 
         field  :password
         field  :password_confirmation
