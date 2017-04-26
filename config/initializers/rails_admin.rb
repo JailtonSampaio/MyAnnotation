@@ -82,6 +82,14 @@ RailsAdmin.config do |config|
     configure :title do
       required true
     end
+
+    list do
+      field :id
+      field :date
+      field :title
+      field :notes
+    end
+
     create do
       field  :title
       field  :notes
