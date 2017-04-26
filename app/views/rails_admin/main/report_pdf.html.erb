@@ -20,7 +20,7 @@
           <h4>Selecione os Usuarios "PARA TODOS DEIXE COMO ESTA"</h4>
             <input name="frm_users" type="text" class="ba-ex1 form-control" value="">
             <%
-              list_user = JSON.parse(User.select('name','id').where("status = 0 AND kind = 2 OR status = 0 AND kind = 1 OR status = 0 AND kind = 0").to_json)
+              list_user = JSON.parse(User.select('name','id').where("status = 0 AND kind = 3 OR status = 0 AND kind = 1 OR status = 0 AND kind = 0").to_json)
               list_user = list_user.to_s
               #transforma a consulta em JSON depois tranforma para string para que aceite .gsub
               #observar que estou usando .html_safe para tranforma HTML Entity (named) do variavel

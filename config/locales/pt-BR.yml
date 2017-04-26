@@ -252,6 +252,9 @@ pt-BR:
       item: Item
       message: Mensagem
     actions:
+      grafic_chart_kick:
+        breadcrumb: Grafico de Desempenho
+        menu: Desempenho Geral
       report_pdf:
         menu: Relatorio
         title: Relatorio de Produção

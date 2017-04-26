@@ -76,7 +76,10 @@ RailsAdmin.config do |config|
     #incluindo icone do http://fontawesome.io/icon
     #navigation_icon "fa-text-width"
     configure :notes do
-      html_attributes rows: 20, cols: 50
+      #html_attributes rows: 20, cols: 50
+      required true
+    end
+    configure :title do
       required true
     end
     create do
@@ -124,6 +127,26 @@ RailsAdmin.config do |config|
       bindings[:controller]._current_user.kind == "super" or bindings[:controller]._current_user.kind == "manager"
 
     end
+
+    configure :name do
+      required true
+    end
+    configure :kind do
+      required true
+    end
+    configure :status do
+      required true
+    end
+    configure :email do
+      required true
+    end
+    configure :password do
+      required true
+    end
+    configure :password_confirmation do
+      required true
+    end
+
     create do
       field  :name
       field  :kind
