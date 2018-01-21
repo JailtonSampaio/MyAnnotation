@@ -101,7 +101,7 @@ module RailsAdmin
                   #Contagem das anotações e a soma dos caracteres das anotações de cada usuario
                   Annotation.where(:user_id => us, :date => frm_data_ini..frm_data_fim).each do |an|
                     anno_total = anno_total + 1
-                    anno_caract = an.notes.length
+                    anno_caract = an.content.length
                   end
                   #incremento da array para criar tabela no prawn usuario , total de anotações e caracteres no preriodo
                   tabela_user << [idname.name,anno_total.to_s,anno_caract.to_s]

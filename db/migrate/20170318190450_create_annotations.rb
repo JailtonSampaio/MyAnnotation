@@ -3,7 +3,7 @@ class CreateAnnotations < ActiveRecord::Migration
     create_table :annotations do |t|
       t.date :date
       t.string :title
-      t.text :notes
+      t.text :content
       t.references :user, index: true, foreign_key: true
       t.integer :status
 

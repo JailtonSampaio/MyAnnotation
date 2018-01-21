@@ -1,12 +1,9 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
 <h4>Comparativo de Produção de Textos. </h4>
 
 Gráfico dinâmico
 
-
-
-
-
-
+<%= bar_chart Annotation.group_by_day(:date).count %>
 
   <script type="text/javascript">
 

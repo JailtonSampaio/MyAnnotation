@@ -20,16 +20,8 @@ module RailsAdmin
 
         register_instance_option :controller do
           Proc.new do
-            if request.get?
-              #flash.now[:notice] = "get successful"
-              render @action.template_name, layout: true
 
-
-            elsif request.post?
-              # Configurando PDF
-
-
-            end
+            render @action.template_name, layout: true
 
           end
 

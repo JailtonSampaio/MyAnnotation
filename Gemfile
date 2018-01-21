@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'haml'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,6 +49,15 @@ gem 'rails_admin_rollincode', :git => 'https://github.com/JailtonSampaio/annotat
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'devise-bootstrap-views'
+
+#db mysql
+gem "mysql2"
+#cria textos aleatorios
+gem "faker"
+
+#graficos dinamicos fazer download highcharts
+gem "chartkick"
+gem "groupdate"
 
 # Gem font-awesome-rails fa
 gem "font-awesome-rails"

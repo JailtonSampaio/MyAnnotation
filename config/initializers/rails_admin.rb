@@ -75,7 +75,7 @@ RailsAdmin.config do |config|
   config.model Annotation do
     #incluindo icone do http://fontawesome.io/icon
     #navigation_icon "fa-text-width"
-    configure :notes do
+    configure :content do
       #html_attributes rows: 20, cols: 50
       required true
     end
@@ -87,12 +87,12 @@ RailsAdmin.config do |config|
       field :id
       field :date
       field :title
-      field :notes
+      field :content
     end
 
     create do
       field  :title
-      field  :notes
+      field  :content
 
 
       field :user_id, :hidden do
@@ -116,7 +116,7 @@ RailsAdmin.config do |config|
 
       edit do
         field  :title
-        field  :notes
+        field  :content
 
         #field.disabled :user_id
         #field.disabled :date
